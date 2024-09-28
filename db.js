@@ -2,6 +2,7 @@ const {Sequelize} = require('sequelize')
 
 const sequelize = new Sequelize('db_network', 'root', '1111', {
   host: 'mysql',
+  port: 3007,
   dialect: 'mysql'
 })
 

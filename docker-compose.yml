@@ -6,7 +6,7 @@ services:
       MYSQL_ROOT_PASSWORD: 1111
       MYSQL_DATABASE: db_network
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
