@@ -3,7 +3,7 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: 1111
+      MYSQL_ROOT_PASSWORD: gdeta235R
       MYSQL_DATABASE: db_network
     ports:
       - "3307:3306"
