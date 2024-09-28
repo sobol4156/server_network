@@ -11,7 +11,7 @@ services:
       - mysql-data:/var/lib/mysql
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -28,11 +28,8 @@ services:
       - DB_NAME=db_network
       - DB_PORT=3306
     depends_on:
-      - mysql
-
-
-
+      mysql:
+        condition: service_healthy
 
 volumes:
   mysql-data:
-
