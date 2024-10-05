@@ -4,6 +4,7 @@ const cors = require("cors");
 const Message = require('./models/Message'); 
 const routerAuth = require("./router/authRouter");
 const routerChat = require("./router/chatRouter");
+const friendsChat = require("./router/friendsRouter");
 const cookieParser = require("cookie-parser");
 const WebSocket = require("ws"); // Добавляем WebSocket
 require("dotenv").config();
@@ -15,12 +16,13 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    origin: "*",
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
 app.use("/auth", routerAuth);
-app.use('/api', routerChat)
+app.use('/api', routerChat);
+app.use('/friends', friendsChat)
 
 const start = async () => {
   const server = app.listen(PORT, () => {

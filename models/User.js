@@ -18,6 +18,10 @@ const User = sequelize.define("User", {
   roles: {
     type: DataTypes.JSON,
     defaultValue: ['User']
+  },
+  friends: {
+    type: DataTypes.JSON,
+    defaultValue: []
   }
 })
 

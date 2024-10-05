@@ -1,6 +1,8 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const { Op } = require("sequelize");
+
 
 const { secret, refreshSecret } = require("../config/config");
 const accesTokenLife = "15m";
@@ -9,9 +11,15 @@ const refreshTokenLige = "7d";
 class AuthController {
   async getAllUsers(req, res){
     try{
-     const arrayUsers = await User.findAll()
+      const currentUserId = req.body.id; 
+      
+      // Получаем всех пользователей, кроме текущего
+      const arrayUsers = await User.findAll({
+        where: {
+          id: { [Op.ne]: currentUserId },
+        },
+      });
      
-     console.log(arrayUsers)
      return res.status(200).json({users:arrayUsers})
     }catch(err){
       console.log("Ошибка получения всех юзеров");
@@ -127,8 +135,8 @@ class AuthController {
   }
 
   async logout(req, res) {
-    res.clearCookie("accessToken");
-    res.clearCookie("refreshToken");
+    res.clearCookie('accessToken', { path: '/' });
+    res.clearCookie('refreshToken', { path: '/' });
     return res.status(200).json({ message: "Вы вышли из системы" });
   }
 
