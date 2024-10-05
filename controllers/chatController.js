@@ -3,11 +3,14 @@ const Message = require("../models/Message.js");
 class ChatController {
   async getChat(req, res) {
     try {
-      const { room } = req.body;
-
-      if (!room) {
-        return res.status(400).json({ message: "Не передан ID комнаты" });
+      const { myId, friendUserId } = req.body;
+      console.log(myId)
+      console.log(friendUserId)
+      if (!myId || !friendUserId) {
+        return res.status(400).json({ message: "Не переданы ID пользователей" });
       }
+      const room = [myId, friendUserId].sort().join("-");
+
       const messages = await Message.findAll({
         where: { room },
         order: [["createdAt", "ASC"]],

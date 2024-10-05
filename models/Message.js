@@ -1,8 +1,8 @@
 // models/Message.js
-const { DataTypes } = require('sequelize');
-const sequelize = require('../db');
+const { DataTypes } = require("sequelize");
+const sequelize = require("../db");
 
-const Message = sequelize.define('Message', {
+const Message = sequelize.define("Message", {
   room: {
     type: DataTypes.STRING,
     allowNull: false,

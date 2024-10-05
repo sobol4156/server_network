@@ -43,8 +43,8 @@ const start = async () => {
       console.log("Received message:", messageStr);
 
       const parsedMessage = JSON.parse(messageStr);
-      const { room, content, userId } = parsedMessage;
-
+      const { myId, friendUserId, content, userId } = parsedMessage;
+      const room = [myId, friendUserId].sort().join("-");
       try {
         const newMessage = await Message.create({
           room,
