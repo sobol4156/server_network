@@ -4,6 +4,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: gdeta235R
       MYSQL_DATABASE: db_network
+      MYSQL_USER: sobol
+      MYSQL_PASSWORD: gdeta235R
     ports:
       - "3306:3306"
     volumes:
