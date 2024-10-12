@@ -85,13 +85,13 @@ class AuthController {
 
       res.cookie("accessToken", accesToken, {
         httpOnly: true,
-        secure: "production",
+        secure: false,
         sameSite: "None",
         maxAge: 15* 60 * 1000,
       });
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: "production",
+        secure: false,
         sameSite: "None",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
@@ -124,7 +124,7 @@ class AuthController {
       );
       res.cookie("accessToken", newAccesToken, {
         httpOnly: true,
-        secure: "production",
+        secure: false,
         sameSite: "None",
         maxAge: 15 * 60 * 1000,
       });
