@@ -2,10 +2,10 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: gdeta235R
+      MYSQL_ROOT_PASSWORD: 1111
       MYSQL_DATABASE: db_network
       MYSQL_USER: sobol
-      MYSQL_PASSWORD: gdeta235R
+      MYSQL_PASSWORD: 1111
     ports:
       - "3306:3306"
     volumes:
