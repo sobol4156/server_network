@@ -11,7 +11,7 @@ sequelize
   .then(() => console.log("connected db_network"))
   .catch((err) => console.log(`нет конекта к бд ${err}`));
 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   console.log(`Database & tables synchronised!`);
 });
 
