@@ -28,7 +28,7 @@ const start = async () => {
   const server = app.listen(PORT, () => {
     console.log("Server started on PORT", PORT);
   });
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ alter: true });
 
   // Создаем WebSocket сервер и подключаем его к HTTP-серверу
   const wss = new WebSocket.Server({ server });
