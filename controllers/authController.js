@@ -86,14 +86,14 @@ class AuthController {
       res.cookie("accessToken", accesToken, {
         httpOnly: true,
         secure: false,
-        sameSite: "Lax",
+        sameSite: 'None',
         path: '/',
         maxAge: 15* 60 * 1000,
       });
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: false,
-        sameSite: "Lax",
+        sameSite: 'None',
         path: '/',
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
@@ -127,7 +127,7 @@ class AuthController {
       res.cookie("accessToken", newAccesToken, {
         httpOnly: true,
         secure: false,
-        sameSite: "Lax",
+        sameSite: 'None',
         path: '/',
         maxAge: 15 * 60 * 1000,
       });
