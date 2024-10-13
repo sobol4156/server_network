@@ -20,6 +20,21 @@ app.use(
     credentials: true,
   })
 );
+// Вручную добавляем CORS-заголовки для всех маршрутов
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  
+  // Для предварительных запросов (preflight requests)
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204);
+  }
+  
+  next();
+});
+
 app.use("/auth", routerAuth);
 app.use('/api', routerChat);
 app.use('/friends', friendsChat)
