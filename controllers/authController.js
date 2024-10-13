@@ -87,12 +87,14 @@ class AuthController {
         httpOnly: true,
         secure: false,
         sameSite: "Lax",
+        path: '/',
         maxAge: 15* 60 * 1000,
       });
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: false,
         sameSite: "Lax",
+        path: '/',
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 
@@ -126,6 +128,7 @@ class AuthController {
         httpOnly: true,
         secure: false,
         sameSite: "Lax",
+        path: '/',
         maxAge: 15 * 60 * 1000,
       });
       return res.status(200).json({message: 'Access токен обновлён'})
